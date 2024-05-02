@@ -32,12 +32,12 @@ namespace TFTBuilder
             return champions;
         }
 
-        public async Task<Trait[]> GetTraitList(Set set)
+        public async Task<Dictionary<string, Trait>> GetTraitList(Set set)
         {
             Stream stream = await client.GetStreamAsync("tfttraits.json");
             TraitData[] traitList = await JsonSerializer.DeserializeAsync<TraitData[]>(stream) ?? [];
             TraitData[] filteredData = traitList.Where(traitData => traitData.Set == set.ToString()).ToArray();
-            Trait[] traits = filteredData.Select(data => new Trait(data)).ToArray();
+            Dictionary<string, Trait> traits = filteredData.ToDictionary(data => data.DisplayName, data => new Trait(data));
             return traits;
         }
 
