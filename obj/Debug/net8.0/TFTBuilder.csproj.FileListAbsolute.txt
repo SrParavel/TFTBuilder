@@ -1,0 +1,15 @@
+C:\Users\Paravel\Documents\GitHub\TFTBuilder\bin\Debug\net8.0\TFTBuilder.exe
+C:\Users\Paravel\Documents\GitHub\TFTBuilder\bin\Debug\net8.0\TFTBuilder.deps.json
+C:\Users\Paravel\Documents\GitHub\TFTBuilder\bin\Debug\net8.0\TFTBuilder.runtimeconfig.json
+C:\Users\Paravel\Documents\GitHub\TFTBuilder\bin\Debug\net8.0\TFTBuilder.dll
+C:\Users\Paravel\Documents\GitHub\TFTBuilder\bin\Debug\net8.0\TFTBuilder.pdb
+C:\Users\Paravel\Documents\GitHub\TFTBuilder\obj\Debug\net8.0\TFTBuilder.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Paravel\Documents\GitHub\TFTBuilder\obj\Debug\net8.0\TFTBuilder.AssemblyInfoInputs.cache
+C:\Users\Paravel\Documents\GitHub\TFTBuilder\obj\Debug\net8.0\TFTBuilder.AssemblyInfo.cs
+C:\Users\Paravel\Documents\GitHub\TFTBuilder\obj\Debug\net8.0\TFTBuilder.csproj.CoreCompileInputs.cache
+C:\Users\Paravel\Documents\GitHub\TFTBuilder\obj\Debug\net8.0\TFTBuilder.sourcelink.json
+C:\Users\Paravel\Documents\GitHub\TFTBuilder\obj\Debug\net8.0\TFTBuilder.dll
+C:\Users\Paravel\Documents\GitHub\TFTBuilder\obj\Debug\net8.0\refint\TFTBuilder.dll
+C:\Users\Paravel\Documents\GitHub\TFTBuilder\obj\Debug\net8.0\TFTBuilder.pdb
+C:\Users\Paravel\Documents\GitHub\TFTBuilder\obj\Debug\net8.0\TFTBuilder.genruntimeconfig.cache
+C:\Users\Paravel\Documents\GitHub\TFTBuilder\obj\Debug\net8.0\ref\TFTBuilder.dll

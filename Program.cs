@@ -1,3 +1,6 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
-System.Console.WriteLine("My name is Paravel!");
+﻿using TFTBuilder;
+
+DataManager dataManager = DataManager.Instance;
+Champion[] champions = await dataManager.GetChampionPool();
+
+System.Console.WriteLine(string.Join(" | ", champions[0].Traits));

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TFTBuilder")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ccbb29a0669b2ff4934635ceff7ac8ab709ab89d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+be99da044bfbeca0a06d8c8e0aba920ae9176c6b")]
 [assembly: System.Reflection.AssemblyProductAttribute("TFTBuilder")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TFTBuilder")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
