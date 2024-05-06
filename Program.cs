@@ -1,16 +1,21 @@
 ﻿using TFTBuilder;
 
 DataManager dataManager = DataManager.Instance;
-Champion[] championPool = await dataManager.GetChampionPool();
-Dictionary<string, Trait> traitList = await dataManager.GetTraitList(Set.TFTSet11);
+await dataManager.LoadData(Set.TFTSet11);
+Dictionary<string, Character> characterDictionary = dataManager.CharacterDictionary;
+Character[] characters = [.. characterDictionary.Values];
+Character[] baseTeam = {
+    characterDictionary["Malphite"],
+    characterDictionary["Rek'Sai"],
+    characterDictionary["Aphelios"],
+    characterDictionary["Lissandra"],
+    characterDictionary["Nautilus"]
+    };
 
-
-TeamBuilder teamBuilder = new(championPool, 3);
-Team team = teamBuilder.GenerateBestTeam(3, traitList, 1000000);
+TeamBuilder teamBuilder = new(characters, 3);
+Team team = teamBuilder.GenerateRandom(baseTeam, 3, 6, 1000000);
 
 Console.WriteLine(team);
-Console.WriteLine("\n-------Traits------\n");
-Console.WriteLine(team.TraitCounter);
-Console.WriteLine(team.ComputeScore(traitList));
+Console.WriteLine(team.Score);
 
-Champion[] champions = team.Champions;
+

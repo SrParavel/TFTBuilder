@@ -5,40 +5,42 @@ namespace TFTBuilder
     class DataManager
     {
         private static DataManager? instance;
-        public static DataManager Instance
-        {
-            get
-            {
-                instance ??= new DataManager();
-                return instance;
-            }
-        }
+        public static DataManager Instance { get { return instance ??= new DataManager(); } }
 
-        private HttpClient client;
+        public Dictionary<string, Trait> TraitDictionary { get; private set; } = [];
+        public Dictionary<string, Character> CharacterDictionary { get; private set; } = [];
 
-        private DataManager()
+        private readonly HttpClient client;
+        private readonly string uri;
+
+        public DataManager()
         {
             client = new();
-
-            string uri = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/";
-            client.BaseAddress = new Uri(uri);
+            uri = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/";
+            client.BaseAddress = new(uri);
         }
 
-        public async Task<Champion[]> GetChampionPool()
+        public async Task LoadData(Set set)
         {
-            Stream stream = await client.GetStreamAsync("tftchampions-teamplanner.json");
-            CharacterData[] characterList = await JsonSerializer.DeserializeAsync<CharacterData[]>(stream) ?? [];
-            Champion[] champions = characterList.Select(character => new Champion(character)).ToArray();
-            return champions;
+            TraitDictionary = await LoadTraits(set);
+            CharacterDictionary = await LoadCharacters(set);
         }
 
-        public async Task<Dictionary<string, Trait>> GetTraitList(Set set)
+        private async Task<Dictionary<string, Trait>> LoadTraits(Set set)
         {
             Stream stream = await client.GetStreamAsync("tfttraits.json");
-            TraitData[] traitList = await JsonSerializer.DeserializeAsync<TraitData[]>(stream) ?? [];
-            TraitData[] filteredData = traitList.Where(traitData => traitData.Set == set.ToString()).ToArray();
-            Dictionary<string, Trait> traits = filteredData.ToDictionary(data => data.DisplayName, data => new Trait(data));
-            return traits;
+            TraitModel[] model = await JsonSerializer.DeserializeAsync<TraitModel[]>(stream) ?? [];
+            TraitModel[] filteredModels = model.Where(m => m.Set == set.ToString()).ToArray();
+            Trait[] traits = filteredModels.Select(fm => new Trait(fm)).ToArray();
+            return traits.ToDictionary(t => t.Name);
+        }
+
+        private async Task<Dictionary<string, Character>> LoadCharacters(Set set)
+        {
+            Stream stream = await client.GetStreamAsync("tftchampions-teamplanner.json");
+            CharacterModel[] models = await JsonSerializer.DeserializeAsync<CharacterModel[]>(stream) ?? [];
+            Character[] characters = models.Select(m => new Character(m)).ToArray();
+            return characters.ToDictionary(c => c.Name);
         }
 
     }
